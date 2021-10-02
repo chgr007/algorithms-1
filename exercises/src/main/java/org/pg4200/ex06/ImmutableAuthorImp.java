@@ -1,0 +1,37 @@
+package org.pg4200.ex06;
+
+import java.util.Collections;
+
+public class ImmutableAuthorImp implements ImmutableAuthor{
+    private final String name;
+    private final String surname;
+
+    public ImmutableAuthorImp() {
+        name = null;
+        surname = null;
+    }
+    public ImmutableAuthorImp(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    @Override
+    public ImmutableAuthor withName(String name) {
+        return new ImmutableAuthorImp(name,this.surname);
+    }
+
+    @Override
+    public ImmutableAuthor withSurname(String surname) {
+        return new ImmutableAuthorImp(this.name, surname);
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String getSurname() {
+        return this.surname;
+    }
+}
